@@ -1,0 +1,28 @@
+{
+    "list": [
+        {
+            "path": "TemplateMap/Cube",
+            "staticFlags": 2147483647
+        },
+        {
+            "path": "TemplateMap/Point Light",
+            "staticFlags": 2147483647
+        },
+        {
+            "path": "TemplateMap/VerylowPolyChicken",
+            "staticFlags": 2147483647
+        },
+        {
+            "path": "TemplateMap/VerylowPolyChicken (1)",
+            "staticFlags": 2147483647
+        },
+        {
+            "path": "TemplateMap/VerylowPolyChicken (2)",
+            "staticFlags": 2147483647
+        },
+        {
+            "path": "TemplateMap/VerylowPolyChicken (3)",
+            "staticFlags": 2147483647
+        }
+    ]
+}
