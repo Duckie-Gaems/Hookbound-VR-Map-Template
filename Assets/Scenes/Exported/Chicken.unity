@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 37e592a5c53c7f84181b5bf9be7d2372, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: b4e625954919d7141b96e9c6068ddeb7, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 72d0996cc11f88b40990e58b7f22fe1d, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -172,12 +172,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapName: Chicken
-  version: 1.0.28
+  version: 1.0.30
   author: Duckie Gaems
   description: Hoi
   exportFolder: C:/Users/Agnes/Downloads
   bakeLightingBeforeExport: 1
-  autoIncrementVersion: 1
+  autoIncrementVersion: 0
 --- !u!64 &260414303
 MeshCollider:
   m_ObjectHideFlags: 0
