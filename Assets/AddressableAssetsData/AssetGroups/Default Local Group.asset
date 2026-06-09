@@ -20,11 +20,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d9cb1455ac9d21c418ec21912c858c11
-    m_Address: Assets/Scenes/TemplateScene.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ba78d5032e0db74408a40dee5607132f, type: 2}
   m_SchemaSet:

@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "Hookbound-VR-Map-Template.sln"
+    "dotnet.defaultSolution": "Hookbound-VR-Map-Template.slnx"
 }

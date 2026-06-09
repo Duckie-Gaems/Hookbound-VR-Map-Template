@@ -1,0 +1,13 @@
+function OnStart()
+print ("Lua script is working.")
+end
+
+function OnUpdate(deltaTime)
+    local sun = Map.Find("Sun")
+    if sun then
+        local pos = sun:GetPosition()
+        pos.y = pos.y - 1 * deltaTime   -- 1 unit per second
+        sun:SetPosition(pos)
+        print("Sun Y = " .. pos.y)
+    end
+end

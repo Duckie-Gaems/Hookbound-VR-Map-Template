@@ -10,7 +10,6 @@ Properties {
 
 SubShader {
     Tags { "Queue"="Geometry" "RenderType"="Opaque"}
-    Cull Off
 
     Pass {
 

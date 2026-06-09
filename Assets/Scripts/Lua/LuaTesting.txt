@@ -1,0 +1,57 @@
+pressedpodbtn = false 
+
+function OnStart()
+    Log("=== OnStart BEGIN ===")
+
+    -- Skin table
+    local skins = {
+        LavaStatic = 1,
+        LavaAnimated = 2,
+        Ice = 3,
+        GhostMonkey = 4,
+        Dirt = 6,
+        Normal = 0
+    }
+
+    -- Skin buttons
+    Log("Registering skin buttons...")
+    for button, skin in pairs(skins) do
+        Log("Checking button: " .. button)
+        Interaction:OnButtonPressed(button, function(source)
+            Player.SetSkin(skin)
+        end)
+    end
+    Log("Skin buttons registered.")
+
+    -- Pod button
+    Log("Registering PodBTN...")
+    Interaction:OnButtonPressed("PodBTN", function(source)
+
+        -- Find object FIRST
+        local obj = Map:Find("PodBTN")
+        if obj == nil then
+            Log("ERROR: Map:Find('PodBTN') returned NIL!")
+            return
+        end
+
+        -- Toggle logic
+        if pressedpodbtn == false then
+            pressedpodbtn = true
+
+            obj:SetColor(255,255,255,0)  -- white
+            P.SendPlayerToPod()
+
+        else
+            pressedpodbtn = false
+
+            obj:SetColor(255,0,0,0)      -- red
+            P.SendPlayerToPod()
+        end
+    end)
+
+    -- Gold hold
+    Interaction:OnButtonPressedForSeconds("Gold", 4, function(duration)
+        Log("Gold held for " .. duration .. " seconds")
+        Player.SetSkin(5)
+    end)
+end
