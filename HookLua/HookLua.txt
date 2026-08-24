@@ -1,0 +1,440 @@
+------------------------------------------------------------
+-- COMMON TYPES
+------------------------------------------------------------
+
+---@class Vector3Table
+---@field x number
+---@field y number
+---@field z number
+
+---@class CameraTable
+---@field x number
+---@field y number
+---@field z number
+---@field rx number
+---@field ry number
+---@field rz number
+
+------------------------------------------------------------
+-- GLOBAL UTILITY
+------------------------------------------------------------
+
+---@param msg string
+function Log(msg)
+    return msg
+end
+
+
+------------------------------------------------------------
+-- MAP API (aliases)
+------------------------------------------------------------
+
+---@class MapAPI
+local MapAPI = {}
+
+---@param name string
+---@return MapObject
+function MapAPI.Find(name)
+    return {}
+end
+
+Map = MapAPI
+World = MapAPI
+Workspace = MapAPI
+Area = MapAPI
+E = MapAPI
+
+---@class MapObject
+local MapObject = {}
+
+---@param self MapObject
+---@return Vector3Table
+function MapObject.GetPosition(self)
+    return { x = 0, y = 0, z = 0 }
+end
+
+---@param self MapObject
+---@param pos Vector3Table
+function MapObject:SetPosition(pos)
+end
+
+---@param self MapObject
+---@param x number
+---@param y number
+---@param z number
+function MapObject:SetScale(x, y, z)
+end
+
+function MapObject:Destroy()
+end
+
+---@param self MapObject
+---@return MapObject
+function MapObject.Clone(self)
+    return {}
+end
+
+---@param self MapObject
+---@param state boolean
+function MapObject:SetEnabled(state)
+end
+
+---@param self MapObject
+---@param state boolean
+function MapObject:SetVisible(state)
+end
+
+---@param self MapObject
+---@param x number
+---@param y number
+---@param z number
+function MapObject:Rotate(x, y, z)
+end
+
+---@param self MapObject
+---@param r number
+---@param g number
+---@param b number
+---@param index number
+function MapObject:SetColor(r, g, b, index)
+end
+
+---@param self MapObject
+---@return string
+function MapObject.GetName(self)
+    return ""
+end
+
+---@param self MapObject
+---@param newName string
+function MapObject:SetName(newName)
+end
+
+---@param self MapObject
+---@param tag string
+---@return MapObject
+function MapObject.FindTag(self, tag)
+    return {}
+end
+
+function MapObject:PlayAnimator(stateName)
+end
+
+function MapObject:StopAnimator()
+end
+
+function MapObject:PlaySound()
+end
+
+function MapObject:StopSound()
+end
+
+function MapObject:PlaySoundOnce()
+end
+
+------------------------------------------------------------
+-- PLAYER API (aliases)
+------------------------------------------------------------
+
+---@class PlayerAPI
+local PlayerAPI = {}
+
+Player = PlayerAPI
+User = PlayerAPI
+LocalPlayer = PlayerAPI
+P = PlayerAPI
+
+---@param self PlayerAPI
+---@param pos Vector3Table
+function PlayerAPI:Teleport(pos)
+end
+
+---@param self PlayerAPI
+---@param speed number
+function PlayerAPI:SetSpeed(speed)
+end
+
+---@param self PlayerAPI
+---@param hand "left"|"right"
+---@return Vector3Table
+function PlayerAPI.GetHandPosition(self, hand)
+    return { x = 0, y = 0, z = 0 }
+end
+
+---@param self PlayerAPI
+---@param mass number
+function PlayerAPI:SetWeight(mass)
+end
+
+---@param self PlayerAPI
+---@return number
+function PlayerAPI.GetWeight(self)
+    return 0
+end
+
+function PlayerAPI:RestoreWeight()
+end
+
+---@param self PlayerAPI
+---@param dir Vector3Table
+---@param strength number
+function PlayerAPI:AddForce(dir, strength)
+end
+
+---@param self PlayerAPI
+---@param dir Vector3Table
+---@param strength number
+function PlayerAPI:AddImpulse(dir, strength)
+end
+
+---@param self PlayerAPI
+---@param vel Vector3Table
+function PlayerAPI:SetVelocity(vel)
+end
+
+---@param self PlayerAPI
+---@return Vector3Table
+function PlayerAPI.GetVelocity(self)
+    return { x = 0, y = 0, z = 0 }
+end
+
+---@param self PlayerAPI
+---@param scale number
+function PlayerAPI:SetGravity(scale)
+end
+
+function PlayerAPI:RestoreGravity()
+end
+
+---@param self PlayerAPI
+---@return CameraTable
+function PlayerAPI.CurrentCamera(self)
+    return { x = 0, y = 0, z = 0, rx = 0, ry = 0, rz = 0 }
+end
+
+---@param self PlayerAPI
+---@param part string
+---@param targetName string
+---@param offset Vector3Table
+function PlayerAPI:AttachToBodyPart(part, targetName, offset)
+end
+
+---@param self PlayerAPI
+---@param targetName string
+function PlayerAPI:DetachFromBodyPart(targetName)
+end
+
+---@param self PlayerAPI
+---@param targetName string
+function PlayerAPI:LookAtPlayer(targetName)
+end
+
+---@param self PlayerAPI
+---@param targetName string
+---@param offset Vector3Table
+function PlayerAPI:AttachToPlayerRoot(targetName, offset)
+end
+
+---@param self PlayerAPI
+---@param targetName string
+function PlayerAPI:DetachFromPlayerRoot(targetName)
+end
+
+function PlayerAPI:SendPlayerToPod()
+end
+
+
+---@param index number
+function PlayerAPI:SetSkin(index)
+end
+
+
+---@param index number
+function PlayerAPI.GetSkin(index)
+end
+
+---@param self PlayerAPI
+---@param name string
+---@return number
+function PlayerAPI.GetSkinByName(self, name)
+    return 0
+end
+
+function PlayerAPI:RandomSkin()
+end
+
+------------------------------------------------------------
+-- SYSTEM API (aliases)
+------------------------------------------------------------
+
+---@class SystemAPI
+local SystemAPI = {}
+
+System = SystemAPI
+Debug = SystemAPI
+Console = SystemAPI
+
+---@param self SystemAPI
+---@param objectName string
+---@param maxLines number
+function SystemAPI:AddConsole(objectName, maxLines)
+end
+
+function SystemAPI:ClearConsole()
+end
+
+---@param self SystemAPI
+---@param objectName string
+function SystemAPI:StopConsole(objectName)
+end
+
+------------------------------------------------------------
+-- INTERACTION API (aliases)
+------------------------------------------------------------
+
+---@class InteractionAPI
+local InteractionAPI = {}
+
+Interaction = InteractionAPI
+Buttons = InteractionAPI
+
+---@param self InteractionAPI
+---@param name string
+---@return Button
+function InteractionAPI.Find(self, name)
+    return {}
+end
+
+---@param self InteractionAPI
+---@param name string
+---@param fn fun(source:string)
+function InteractionAPI:OnButtonPressed(name, fn)
+end
+
+---@param self InteractionAPI
+---@param name string
+---@param seconds number
+---@param fn fun(duration:number)
+function InteractionAPI:OnButtonPressedForSeconds(name, seconds, fn)
+end
+
+---@class Button
+local Button = {}
+
+---@param self Button
+---@param fn fun(source:string)
+function Button:OnPress(fn)
+end
+
+---@param self Button
+---@param fn fun(source:string, duration:number)
+function Button:OnHold(fn)
+end
+
+---@param self Button
+---@param seconds number
+---@param fn fun(duration:number)
+function Button:OnPressForSeconds(seconds, fn)
+end
+
+---@param self Button
+---@param source string
+function Button:InvokePress(source)
+end
+
+---@param self Button
+---@param source string
+---@param duration number
+function Button:InvokeHold(source, duration)
+end
+
+---@param self Button
+---@param duration number
+function Button:InvokeHoldTarget(duration)
+end
+
+---@param self Button
+---@return any
+function Button:GetObject()
+    return {}
+end
+
+------------------------------------------------------------
+-- GRAPPLE API (aliases)
+------------------------------------------------------------
+
+---@class GrappleAPI
+local GrappleAPI = {}
+
+Grapple = GrappleAPI
+GrappleHook = GrappleAPI
+GrappleInteraction = GrappleAPI
+
+---@param self GrappleAPI
+---@param name string
+---@return GrappleBridge|nil
+function GrappleAPI.Find(self, name)
+    return {}
+end
+
+---@param self GrappleAPI
+---@param name string
+---@param fn fun()
+function GrappleAPI:OnAttachedTo(name, fn)
+end
+
+---@param self GrappleAPI
+---@param name string
+---@param fn fun()
+function GrappleAPI:OnDetachedTo(name, fn)
+end
+
+---@class GrappleBridge
+local GrappleBridge = {}
+
+------------------------------------------------------------
+-- INPUT API (aliases)
+------------------------------------------------------------
+
+---@class InputAPI
+local InputAPI = {}
+
+Input = InputAPI
+Inp = InputAPI
+Controller = InputAPI
+
+---@param self InputAPI
+---@param pushAmount number
+---@param fn fun(pushAmount: number)
+function InputAPI:OnLeftControllerGrip(pushAmount, fn)
+end
+
+---@param self InputAPI
+---@param pushAmount number
+---@param fn fun(pushAmount: number)
+function InputAPI:OnRightControllerGrip(pushAmount, fn)
+end
+
+---@param self InputAPI
+---@param fn fun()
+function InputAPI:OnLeftControllerXButton(fn)
+end
+
+---@param self InputAPI
+---@param fn fun()
+function InputAPI:OnLeftControllerYButton(fn)
+end
+
+---@param self InputAPI
+---@param fn fun()
+function InputAPI:OnRightControllerAButton(fn)
+end
+
+---@param self InputAPI
+---@param fn fun()
+function InputAPI:OnRightControllerBButton(fn)
+end
+
+------------------------------------------------------------
+-- END OF HOOKLUA.TXT
+------------------------------------------------------------

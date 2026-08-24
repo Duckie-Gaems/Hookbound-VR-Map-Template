@@ -56,15 +56,50 @@
         "temp/": true,
         "Temp/": true
     },
+
     "files.associations": {
         "*.asset": "yaml",
         "*.meta": "yaml",
         "*.prefab": "yaml",
-        "*.unity": "yaml"
+        "*.unity": "yaml",
+	"*.txt": "lua"
     },
+
+    "Lua.workspace.library": [
+        "${workspaceFolder}/HookLua"
+    ],
+
+    "Lua.workspace.ignoreDir": [
+        "Library",
+        "Temp",
+        "Obj",
+        "Logs",
+        "Packages",
+        "ProjectSettings",
+        "UserSettings",
+        "Assets/Plugins",
+        "Assets/StreamingAssets",
+        "Assets/ThirdParty",
+        "Assets/External",
+        "Assets/UnityPackages",
+        "Assets/TextMesh Pro"
+    ],
+
+    "Lua.runtime.version": "Lua 5.1",
+
+"Lua.diagnostics.globals": [
+    "Map",
+    "Player",
+    "System",
+    "Interaction",
+    "Grapple",
+    "Log"
+],
+	  "Lua.diagnostics.disable": ["lowercase-global", "need-check-nil"],
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
+
     "dotnet.defaultSolution": "Hookbound-VR-Map-Template.slnx"
 }

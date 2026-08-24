@@ -1,0 +1,86 @@
+ToggledLavaFur = false
+
+-- Timer tracking tables
+local activeTimers = {}
+
+function OnStart()
+    print("Lua script OnStart is working")
+    -- SystemAPI stuff
+    System:AddConsole("ConsoleOutput", 128)
+    
+    -- Variables
+    local TeleportToPodButton = Map.Find("TeleportToPodButtonMain")
+    local ToggleLavaFurButton = Map.Find("ToggleLavaFurButtonMain")
+    local PlaySoundButton = Map.Find("PlaySoundButtonMain")
+    local GrappleColorButton = Map.Find("GrappleColorButtonMain")
+
+    Interaction:OnButtonPressed("TeleportToPodButtonMain", function(source)
+        if TeleportToPodButton == nil then
+            print("ERROR: Couldn't find 'TeleportToPodButtonMain'")
+            return
+        end
+        TeleportToPodButton:SetColor(255, 255, 255, 0) 
+        
+         -- 2-second timer to reset button color
+        table.insert(activeTimers, { button = TeleportToPodButton, timeRemaining = 2.0, resetColor = {255, 0, 0, 0} })
+        
+        Player:SendPlayerToPod() 
+    end)
+
+    Interaction:OnButtonPressed("ToggleLavaFurButtonMain", function(source)
+        if ToggleLavaFurButton == nil then
+            print("ERROR: Couldn't find 'ToggleLavaFurButtonMain'")
+            return
+        end
+
+        if ToggledLavaFur == false then
+            ToggledLavaFur = true
+            ToggleLavaFurButton:SetColor(255, 255, 255, 0) 
+            Player.SetSkin(1)
+        else
+            ToggledLavaFur = false
+            ToggleLavaFurButton:SetColor(255, 0, 0, 0)
+            Player.SetSkin(0)
+        end
+    end)
+
+    Interaction:OnButtonPressed("PlaySoundButtonMain", function(source)
+        if PlaySoundButton == nil then
+            print("ERROR: Couldn't find 'PlaySoundButtonMain'")
+            return
+        end
+        PlaySoundButton:SetColor(255, 255, 255, 0)
+        PlaySoundButton:PlaySound()
+        
+        -- 2-second timer to reset button color
+        table.insert(activeTimers, { button = PlaySoundButton, timeRemaining = 2.0, resetColor = {255, 0, 0, 0} })
+    end)
+
+    Grapple:OnAttachedTo("GrappleColorButtonMain", function()
+        print("Grapple attached to button.")
+        if GrappleColorButton ~= nil then
+            GrappleColorButton:SetColor(255, 0, 0, 0)
+        end
+    end)
+    
+    Grapple:OnDetachedTo("GrappleBTN", function()
+        print("Grapple detached from button.")
+        if GrappleColorButton ~= nil then
+            GrappleColorButton:SetColor(255, 255, 255, 0)
+        end
+    end)
+end
+
+function OnUpdate(deltaTime)
+
+    for i = #activeTimers, 1, -1 do
+        local timerData = activeTimers[i]
+        timerData.timeRemaining = timerData.timeRemaining - deltaTime
+        
+        if timerData.timeRemaining <= 0 then
+            local c = timerData.resetColor
+            timerData.button:SetColor(c[1], c[2], c[3], c[4])
+            table.remove(activeTimers, i)
+        end
+    end
+end

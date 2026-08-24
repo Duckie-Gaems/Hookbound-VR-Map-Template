@@ -1,0 +1,15 @@
+function OnStart()
+    Log("beginning grapple interaction..")
+
+    local target_obj = Map.Find("GrappleBTN")
+
+    Grapple:OnAttachedTo("GrappleBTN", function()
+        Log("Grapple attached to button.")
+        target_obj:SetColor(255, 0, 0, 0)
+    end)
+
+    Grapple:OnDetachedTo("GrappleBTN", function()
+        Log("Grapple detached from button.")
+        target_obj:SetColor(255, 255, 255, 0)
+    end)
+end
