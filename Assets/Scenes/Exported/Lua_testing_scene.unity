@@ -3941,15 +3941,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1752848183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb3af7ff8a1eb9478589ff346fd3143, type: 3}
+  m_Script: {fileID: 474288627, guid: 953082765ccdff746b22043d4702e1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mapName: Lua testing scene
-  MaxPlayers: 7
+  MaxPlayers: 10
   gamemodes: 64
   customSkybox: {fileID: 8900000, guid: 2fc9bfd810d6778439af91e668643e82, type: 3}
-  skyboxSize: 0
-  exportFolder: C:/Bandicam/TestAssetBundles
+  skyboxSize: 1
+  exportFolder: 
   SkyboxFilePoint: Assets\Resources\Material\Skybox
 --- !u!4 &1752848185
 Transform:
